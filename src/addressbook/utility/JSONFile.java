@@ -13,7 +13,7 @@ import addressbook.model.Contacts;
 public class JSONFile {
 
 	static File file = new File("AddressBook.json");
-	
+	static int index  = -1;
 	//create
 	public void createFile() {
 		try {
@@ -24,7 +24,7 @@ public class JSONFile {
 	}
 	
 	//write
-	public void writeFile(Contacts contacts) {
+	public int writeFile(Contacts contacts) {
 		Gson gson = new Gson();
 		String jsonData = gson.toJson(contacts);
 		System.out.println(jsonData);
@@ -32,10 +32,13 @@ public class JSONFile {
 		FileWriter fileWriter = new FileWriter(file,true);
 		fileWriter.write(jsonData);
 		System.out.println("JSON updated");
+		index++;
 		fileWriter.close();
+		return index;
 		
 		} catch (IOException e) {
 			e.printStackTrace();
+			return -2;
 		}
 	}
 	

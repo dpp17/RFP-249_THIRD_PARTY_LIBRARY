@@ -1,18 +1,14 @@
 package addressbook.services;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
 import addressbook.interfaces.InterfaceAddressBook;
 import addressbook.model.Contacts;
-import addressbook.utility.CSVFile;
-import addressbook.utility.SelfFileHandling;
+import addressbook.utility.JSONFile;
 
 public class ImplementationsOfAddressBook implements InterfaceAddressBook{
 
 	//SelfFileHandling selHandling = new SelfFileHandling();				//file_handling
-	CSVFile selHandling = new CSVFile();								//CSV file_Handling
-	//JSONFile selHandling = new JSONFile();							//JSON file_Handling
+	//CSVFile selHandling = new CSVFile();								//CSV file_Handling
+	JSONFile selHandling = new JSONFile();							//JSON file_Handling
 	
 	public void welcomeDisplay() {
 		System.err.println("===================================");
@@ -23,16 +19,12 @@ public class ImplementationsOfAddressBook implements InterfaceAddressBook{
 
 	public int createContactDetails(Contacts contacts) {
 		System.out.println(" List of All the Contscts ");
-		return selHandling.writeFile(contacts);				//CSV file_Handling
+		return selHandling.writeFile(contacts);				//JSON file_Handling
 	}
 
 		public void showAllContacts() {
 			System.out.println("*************** : All Available Contacts- : ***************");
-			try {
-				selHandling.readFile();						//CSV file_Handling
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			selHandling.readFile();						//JSON file_Handling
 		}
 		
 		
