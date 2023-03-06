@@ -10,8 +10,8 @@ import addressbook.utility.SelfFileHandling;
 
 public class ImplementationsOfAddressBook implements InterfaceAddressBook{
 
-	SelfFileHandling selHandling = new SelfFileHandling();				//file_handling
-	//CSVFile selHandling = new CSVFile();								//CSV file_Handling
+	//SelfFileHandling selHandling = new SelfFileHandling();				//file_handling
+	CSVFile selHandling = new CSVFile();								//CSV file_Handling
 	//JSONFile selHandling = new JSONFile();							//JSON file_Handling
 	
 	public void welcomeDisplay() {
@@ -23,12 +23,16 @@ public class ImplementationsOfAddressBook implements InterfaceAddressBook{
 
 	public int createContactDetails(Contacts contacts) {
 		System.out.println(" List of All the Contscts ");
-		return selHandling.writeFile(contacts);				//file_handling
+		return selHandling.writeFile(contacts);				//CSV file_Handling
 	}
 
 		public void showAllContacts() {
 			System.out.println("*************** : All Available Contacts- : ***************");
-			selHandling.readFile();
+			try {
+				selHandling.readFile();						//CSV file_Handling
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		
